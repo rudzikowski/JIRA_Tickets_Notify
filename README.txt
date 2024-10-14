@@ -22,8 +22,13 @@ TERMS OF USE
     The program is free and open source. If you would like to support the author by writing a post on Linkedin about my code. 
     I would be very grateful for such feedback. Please tag me in the post(https://www.linkedin.com/in/artur-rudzik/)
 
-SOURCE CODE
+AUTHOR
+      Artur Rudzik - 
+        LINKEDIN: https://www.linkedin.com/in/artur-rudzik/
+        GITHUB: https://github.com/rudzikowski/
 
+SOURCE CODE
+      https://github.com/rudzikowski/JIRA_Tickets_Notify/
 
 
 CONFIGURATION
