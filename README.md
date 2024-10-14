@@ -6,7 +6,7 @@
 # AUTHOR 
     Artur Rudzik - 
         LINKEDIN: https://www.linkedin.com/in/artur-rudzik/
-        GITHUB: 
+        GITHUB: https://github.com/rudzikowski/
 
 # LIBRARIES
     This script uses the following libraries:
