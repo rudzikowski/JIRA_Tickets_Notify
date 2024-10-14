@@ -2,7 +2,6 @@ import json
 import datetime
 from jira import JIRA
 import time
-from jira import JIRA
 import wave
 import pyaudio
 
@@ -142,7 +141,6 @@ if __name__ == "__main__":
     confStatus = False
     try:
         jira_email = GetScriptConfigOf("email")
-        jira_token = GetScriptConfigOf("token")
         jira_token = GetScriptConfigOf("token")
         jira_project_code = GetScriptConfigOf("projectCode")
         jira_tickets_types = GetScriptConfigOf("ticketTypesConf")
