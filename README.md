@@ -43,3 +43,12 @@
         1. config.json file completed correctly,
         2. array.json file,
         3. .wav files whose names are entered into the configuration file.
+
+# MAKE EXE FILE
+    If you want to quick run this script without console writing.
+    Do this steps to export it to exe file:
+    1. Install pyinstaller library: pip install pyinstaller
+    2. Type this command in the script folder: pyinstaller -F tickets_notification.py
+    3. Wait until the end of export process and then move exe file from dist folder to main directory with all configuration files.
+    4. Run script whenever you need to by starting tickets_notification.exe
+    
