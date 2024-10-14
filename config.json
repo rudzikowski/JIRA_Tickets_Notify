@@ -1,0 +1,8 @@
+{
+    "url":"",
+    "email":"",
+    "token":"",
+    "projectCode":"",
+    "ticketTypesConf":{"example1":"sound1","example2":"sound2"},
+    "ClosedStatus":""
+}
