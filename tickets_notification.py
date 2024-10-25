@@ -68,7 +68,6 @@ def CheckTicketsStatus():
                         print(str(datetime.datetime.now()) + " - Ticket closed: " + Ticket)
                         NewIssuesToCheck.remove(Ticket)
                         WriteTicketFile(NewIssuesToCheck)
-                        break
             except:
                 print(str(datetime.datetime.now()) + " - " + Ticket + " ticket does not exist in the system")
                 NewIssuesToCheck.remove(Ticket)
@@ -95,12 +94,12 @@ def GetTicketsFromJIRA():
     return jira.search_issues('project='+ str(jira_project_code) +' AND statusCategory="To Do"', maxResults=False)
 
 def Call_notification(ticket):
-    if(str(ticket) not in added_tickets):
+    if((str(ticket) not in added_tickets) and (ticket.fields.issuetype.name in jira_tickets_types)):
         added_tickets.append(str(ticket))
         WriteTicketFile(added_tickets)
-        ticketType = ticket.fields.issuetype
+        ticketType = ticket.fields.issuetype.name
         print(str(datetime.datetime.now()) + " - New ticket detected: " + str(ticket) + " | Ticket type: " + str(ticketType))
-        Notify(str(ticketType))
+        Notify(ticketType)
 
 def Notify(ticket_type):
     try:
@@ -147,7 +146,7 @@ if __name__ == "__main__":
         jira_project_code = GetScriptConfigOf("projectCode")
         jira_tickets_types = GetScriptConfigOf("ticketTypesConf")
         jira_URL = GetScriptConfigOf("url")
-        jira_closed_status = GetScriptConfigOf("ClosedStatus")
+        jira_closed_statuses = GetScriptConfigOf("ClosedStatus")
         confStatus = True
         try:
             jira = LogInToJira(jira_URL,jira_email,jira_token)
@@ -160,9 +159,9 @@ if __name__ == "__main__":
     
 
     if(confStatus):
-        print("----------Configuration completed successfully----------")
-        print("-------------------Monitoring Started-------------------")
-        print("----------" + str(datetime.datetime.now()) + "----------")
+        print("------------------Configuration completed successfully------------------------")
+        print("------------------------------Monitoring Started------------------------------")
+        print("-------------------------" + str(datetime.datetime.now()) + "---------------------------")
         processOngoing = True 
         while(processOngoing):
             StartNewDetectCycle()
