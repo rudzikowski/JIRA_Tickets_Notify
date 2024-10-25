@@ -37,7 +37,7 @@ Complete the `config.json` file as follows:
 - "ticketTypesConf": - Enter the names of the ticket types in the dictionary, along with the name of the audio file (without the .wav extension),
         that you want to play when a new ticket arrives. The number of types is unlimited. Example: {"example1":"sound1","example2":"sound2"}. You 
         can also use one sound to all of the types by entering the same name.
-- "ClosedStatus": - Enter what text define "DONE" status in your JIRA project.
+- "ClosedStatus": - Enter what text define "DONE" status in your JIRA project, it might be a few of words, thats why you are able to enter it inside the array.
     
 ### LAST CHECK
 Make sure the following are in the same folder as the script you are running:
