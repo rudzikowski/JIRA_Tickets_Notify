@@ -26,7 +26,7 @@ Complete the `config.json` file as follows:
     "Task": "task_sound",
     "Story": "story_sound"
   },
-  "ClosedStatus": "Closed"
+  "ClosedStatus": ["Closed","Done","Complited"]
 }
 ```
 
