@@ -12,7 +12,7 @@ jira_email = ""
 jira_token = ""
 jira_project_code = ""
 jira_tickets_types = []
-jira_closed_status = ""
+jira_closed_statuses = []
 jira_URL = ""
 #-----------------------------------------------------
 
@@ -62,11 +62,13 @@ def CheckTicketsStatus():
         for Ticket in NewIssuesToCheck:
             try:
                 issue = jira.issue(Ticket)
-                IssueStatus = str(issue.fields.status)
-                if(IssueStatus == jira_closed_status):
-                    print(str(datetime.datetime.now()) + " - Ticket closed: " + Ticket)
-                    NewIssuesToCheck.remove(Ticket)
-                    WriteTicketFile(NewIssuesToCheck)
+                issueStatus = str(issue.fields.status)
+                for closedStatus in jira_closed_statuses:
+                    if(issueStatus == closedStatus):
+                        print(str(datetime.datetime.now()) + " - Ticket closed: " + Ticket)
+                        NewIssuesToCheck.remove(Ticket)
+                        WriteTicketFile(NewIssuesToCheck)
+                        break
             except:
                 print(str(datetime.datetime.now()) + " - " + Ticket + " ticket does not exist in the system")
                 NewIssuesToCheck.remove(Ticket)
@@ -122,13 +124,13 @@ def WelcomeBanner():
     print("""
  .-._          _,.---._    ,--.--------.  .=-.-.   _,---.                             
 /==/ \\  .-._ ,-.' , -  `. \\/==/,  -   , -\\/==/_ /.-`.' ,  \\ ,--.-.  .-,--.          
-|==|, \\/ /, /==/_,  ,  - \\==\\.-.  - ,-./==|, |/==/_  _.-'/==/- / /=/_ /     \  
+|==|, \\/ /, /==/_,  ,  - \\==\\.-.  - ,-./==|, |/==/_  _.-'/==/- / /=/_ /    \\  
 |==|-  \\|  |==|   .=.     |`--`\\==\\- \\  |==|  /==/-  '..-.\\==\\, \\/=/. /         
 |==| ,  | -|==|_ : ;=:  - |     \\==\\_ \\ |==|- |==|_ ,    / \\==\\  \\/ -/        
 |==| -   _ |==| , '='     |     |==|- | |==| ,|==|   .--'   |==|  ,_/               
 |==|  /\\ , |\\==\\ -    ,_ \\/      |==|, | |==|- |==|-  |      \\==\\-, /         
 /==/, | |- | '.='. -   .'       /==/ -\\/ /==/. /==/   \\      /==/._/             
-`--`./  `--`   `--`--''         `--`--` `--`-``--`---'      `--`-`              """)
+`--`./  `--`   `--`--''         `--`--` `--`-``--`---'      `--`-`    """)
     
     print("---------- Script for notifying about new events in the JIRA system ----------")
     print("------------------- Version: 2.0; Author: Artur Rudzik -----------------------") 
